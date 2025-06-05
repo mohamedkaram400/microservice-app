@@ -1,6 +1,5 @@
 import datetime, os, jwt
 from flask import Flask, request
-import requests
 from flask_mysqldb import MySQL
 
 

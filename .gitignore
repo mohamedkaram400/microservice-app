@@ -1,1 +1,5 @@
-/auth_service
+/auth_service/include
+/auth_service/bin
+/auth_service/lib
+/auth_service/lib64
+/auth_service/pyvenv.cfg
