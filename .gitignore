@@ -3,3 +3,8 @@
 /auth_service/lib
 /auth_service/lib64
 /auth_service/pyvenv.cfg
+/gateway_service/include
+/gateway_service/bin
+/gateway_service/lib
+/gateway_service/lib64
+/gateway_service/pyvenv.cfg
