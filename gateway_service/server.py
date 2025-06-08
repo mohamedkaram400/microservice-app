@@ -25,7 +25,7 @@ def login():
     else:
         return err
     
-@server.route('upload', methods=['POST'])
+@server.route('/upload', methods=['POST'])
 def upload():
     access, err = validate.token(request)
 
@@ -42,8 +42,9 @@ def upload():
         return 'success', 200
     else:
         return 'not authorized', 401
+    
 
-@server.route('download', methods=['GET'])
+@server.route('/download', methods=['GET'])
 def download():
     pass
 
