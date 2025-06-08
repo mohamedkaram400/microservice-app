@@ -13,12 +13,12 @@ mysql = MySQL(server)
 
 @server.route('/login', methods=['POST'])
 def login():
-    print("Headers:", request.headers)
-    print("Content-Type:", request.content_type)
-    print("Raw data:", request.data)
+    # print("Headers:", request.headers)
+    # print("Content-Type:", request.content_type)
+    # print("Raw data:", request.data)
 
     data = request.get_json()
-    print("Parsed JSON:", data)
+    # print("Parsed JSON:", data)
 
     print(data)
     if not data or 'email' not in data or 'password' not in data:
