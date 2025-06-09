@@ -13,30 +13,23 @@ mysql = MySQL(server)
 
 @server.route('/login', methods=['POST'])
 def login():
-    # print("Headers:", request.headers)
-    # print("Content-Type:", request.content_type)
-    # print("Raw data:", request.data)
-
     data = request.get_json()
-    # print("Parsed JSON:", data)
-
-    print(data)
     if not data or 'email' not in data or 'password' not in data:
-        return data, 'Missing credentials', 401
+        return {"error": "Missing credentials"}, 401
 
     email = data['email']
     password = data['password']
 
-    print(email, password)
-    # check db for email and password  
     cur = mysql.connection.cursor()
     cur.execute("SELECT email, password FROM user WHERE email=%s", (email,))
     user_row = cur.fetchone()
 
     if user_row and user_row[1] == password:
-        return createJWT(email, os.environ.get('JWT_SECRET'), True)
+        token = createJWT(email, os.environ.get('JWT_SECRET'), True)
+        return {"token": token}, 200
     else:
-        return 'Invalid credentials', 401
+        return {"error": "Invalid credentials"}, 401
+
 
 def createJWT(email, secret, auth):
     return jwt.encode(

@@ -8,3 +8,9 @@
 /gateway_service/lib
 /gateway_service/lib64
 /gateway_service/pyvenv.cfg
+/converter_service/pyvenv.cfg
+/converter_service/include
+/converter_service/bin
+/converter_service/lib
+/converter_service/lib64
+/converter_service/pyvenv.cfg
