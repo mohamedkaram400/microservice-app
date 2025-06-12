@@ -14,3 +14,9 @@
 /converter_service/lib
 /converter_service/lib64
 /converter_service/pyvenv.cfg
+/notification_service/pyvenv.cfg
+/notification_service/include
+/notification_service/bin
+/notification_service/lib
+/notification_service/lib64
+/notification_service/pyvenv.cfg
