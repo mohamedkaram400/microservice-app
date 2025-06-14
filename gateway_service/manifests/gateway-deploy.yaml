@@ -5,7 +5,7 @@ metadata:
   labels:
     app: gateway
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: gateway
@@ -20,9 +20,10 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: mohamedkaram100/gateway-service:v2
+          image: mohamedkaram100/gateway-service:v10
+          imagePullPolicy: Never
           ports:
-            - containerPort: 5000
+            - containerPort: 8080
           envFrom:
             - configMapRef:
                 name: gateway-configmap

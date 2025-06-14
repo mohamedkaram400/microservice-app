@@ -8,7 +8,7 @@ def notification(message):
     mp3_fid = message["mp3_fid"]
     sender_address = os.environ.get("GMAIL_ADDRESS")
     sender_password = os.environ.get("GMAIL_PASSWORD")
-    receiver_address = message["username"]
+    receiver_address = message["email"]
 
     msg = EmailMessage()
     msg.set_content(f"mp3 file_id: {mp3_fid} is now ready!")

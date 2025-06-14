@@ -6,13 +6,15 @@ from flask_mysqldb import MySQL
 server = Flask(__name__)
 server.config['MYSQL_HOST'] = os.environ.get('MYSQL_HOST')
 server.config['MYSQL_USER'] = os.environ.get('MYSQL_USER')
-server.config['MYSQL_PORT'] = os.environ.get('MYSQL_PORT')
+server.config['MYSQL_PORT'] = int(os.environ.get('MYSQL_PORT', 3306))  
 server.config['MYSQL_PASSWORD'] = os.environ.get('MYSQL_PASSWORD')
 server.config['MYSQL_DB'] = os.environ.get('MYSQL_DB')
 mysql = MySQL(server)
 
 @server.route('/login', methods=['POST'])
 def login():
+    print(">>> RAW DATA:", request.data)
+    print(">>> JSON PARSED:", request.get_json())
     data = request.get_json()
     if not data or 'email' not in data or 'password' not in data:
         return {"error": "Missing credentials"}, 401
@@ -39,7 +41,7 @@ def createJWT(email, secret, auth):
             'iat': datetime.datetime.utcnow(),
             'admin': auth
         },
-        secret= secret,
+        secret,
         algorithm= 'HS256'
     )
 

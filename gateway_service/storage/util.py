@@ -4,12 +4,13 @@ def upload(f, fs, channel, access):
     try:
         fid = fs.put(f)
     except Exception as err:
+        print("GridFS Upload Error:", err)
         return 'internal server error', 500
-    
+
     message = {
         'video_fid': str(fid),
         'mp3': None,
-        "username": access["username"],
+        "email": access["email"],
     }
 
     try:
@@ -22,7 +23,8 @@ def upload(f, fs, channel, access):
             ),
         )
     except Exception as err:
-        print(err)
+        print("RabbitMQ Publish Error:", err)
         fs.delete(fid)
-        return 'internal server error'
-    
+        return 'internal server error', 500
+
+     

@@ -4,9 +4,10 @@ from pymongo import MongoClient
 import pika, sys, os, time
 
 def main():
-    clint = MongoClient('host.minikube.internal', 27017)
-    db_videos = clint.videos
-    db_mp3s = clint.mp3
+    client = MongoClient("mongodb://mongodb:27017")
+
+    db_videos = client.videos
+    db_mp3s = client.mp3
 
     fs_videos = gridfs.GridFS(db_videos)
     fs_mp3s = gridfs.GridFS(db_mp3s)

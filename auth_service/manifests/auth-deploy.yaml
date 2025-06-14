@@ -5,7 +5,7 @@ metadata:
   labels:
     app: auth
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: auth
@@ -19,8 +19,9 @@ spec:
         app: auth
     spec:
       containers:
-        - name: auth
-          image: mohamedkaram100/auth-service
+        - name: auth-local
+          image: auth-service-local:v5
+          imagePullPolicy: Never
           ports:
             - containerPort: 5000
           envFrom:

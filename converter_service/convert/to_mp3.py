@@ -1,9 +1,9 @@
 import pika, tempfile, os, json
 from bson.objectid import ObjectId
-from moviepy import VideoFileClip
+from moviepy.editor import VideoFileClip
 
 def start(message, fs_videos, fs_mp3s, channel):
-    message = json.load(message)
+    message = json.loads(message)
     tf = tempfile.NamedTemporaryFile()
     out = fs_videos.get(ObjectId(message['video_fid']))
     tf.write(out.read())
@@ -34,5 +34,6 @@ def start(message, fs_videos, fs_mp3s, channel):
             ),
         )
     except Exception as err:
+        print(f"Failed to publish: {err}")
         fs_mp3s.delete(fid)
         return "failed to publish message"
