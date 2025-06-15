@@ -7,7 +7,7 @@ def notification(message):
     message = json.loads(message)
     mp3_fid = message["mp3_fid"]
     sender_address = os.environ.get("GMAIL_ADDRESS")
-    sender_password = os.environ.get("GMAIL_PASSWORD")
+    sender_address = os.environ.get("MAILTRAP_EMAIL")
     receiver_address = message["email"]
 
     msg = EmailMessage()
@@ -16,9 +16,16 @@ def notification(message):
     msg["From"] = sender_address
     msg["To"] = receiver_address
 
-    session = smtplib.SMTP("smtp.gmail.com", 587)
+    session = smtplib.SMTP("sandbox.smtp.mailtrap.io", 587)
     session.starttls()
-    session.login(sender_address, sender_password)
-    session.send_message(msg, sender_address, receiver_address)
+    session.login(os.environ.get("MAILTRAP_USER"), os.environ.get("MAILTRAP_PASS"))
+    session.send_message(msg)
     session.quit()
     print("Mail Sent")
+
+    # session = smtplib.SMTP("smtp.gmail.com", 587)
+    # session.starttls()
+    # session.login(sender_address, sender_password)
+    # session.send_message(msg, sender_address, receiver_address)
+    # session.quit()
+    # print("Mail Sent")
