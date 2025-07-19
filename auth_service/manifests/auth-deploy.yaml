@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: auth-local
-          image: auth-service-local:v5
+          image: auth-service
           imagePullPolicy: Never
           ports:
             - containerPort: 5000
