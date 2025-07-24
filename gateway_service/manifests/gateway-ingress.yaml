@@ -9,7 +9,7 @@ metadata:
     #nginx.ingress.kubernetes.io/proxy-max-temp-file-size: "1024m"
 spec:
   rules:
-    - host: mp3converter.com
+    - host: gateway-service.local
       http:
         paths:
           - path: /
@@ -18,5 +18,8 @@ spec:
               service:
                 name: gateway
                 port:
-                  number: 8080
+                  number: 8090
                   
+
+
+

@@ -3,6 +3,7 @@ import gridfs
 from pymongo import MongoClient
 import pika, sys, os, time
 
+
 def main():
     client = MongoClient("mongodb://mongodb:27017")
 

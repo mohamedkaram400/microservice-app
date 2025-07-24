@@ -20,10 +20,10 @@ spec:
     spec:
       containers:
         - name: gateway
-          image: mohamedkaram100/gateway-service:v10
+          image: gateway-service:v5
           imagePullPolicy: Never
           ports:
-            - containerPort: 8080
+            - containerPort: 8090
           envFrom:
             - configMapRef:
                 name: gateway-configmap

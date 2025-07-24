@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: converter
-          image: mohamedkaram100/converter-service:v5
+          image: converter-service
           imagePullPolicy: Never
           ports:
             - containerPort: 8080

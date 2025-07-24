@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: notification
-          image: mohamedkaram100/notification-service:v4
+          image: notification-service
           imagePullPolicy: Never
           ports:
             - containerPort: 8080

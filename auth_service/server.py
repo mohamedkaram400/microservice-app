@@ -1,9 +1,11 @@
 import datetime, os, jwt
 from flask import Flask, request
 from flask_mysqldb import MySQL
-
+from prometheus_flask_exporter import PrometheusMetrics
 
 server = Flask(__name__)
+metrics = PrometheusMetrics(server)
+
 server.config['MYSQL_HOST'] = os.environ.get('MYSQL_HOST')
 server.config['MYSQL_USER'] = os.environ.get('MYSQL_USER')
 server.config['MYSQL_PORT'] = int(os.environ.get('MYSQL_PORT', 3306))  

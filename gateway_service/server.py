@@ -5,8 +5,10 @@ from auth import validate
 from auth_svc import access
 from storage import util
 from bson.objectid import ObjectId
+from prometheus_flask_exporter import PrometheusMetrics
 
 server = Flask(__name__)
+metrics = PrometheusMetrics(server)
 
 # mongo_video = PyMongo(server, uri="mongodb://host.minikube.internal:27017/videos")
 # mongo_mp3 = PyMongo(server, uri="mongodb://host.minikube.internal:27017/mp3s")
@@ -65,7 +67,7 @@ def upload():
         err = util.upload(f, videos_fs, channel, access)
         if err:
             print("Upload utility returned error:", err)
-            return "Upload error", 500
+            return err
 
         return "success", 200
 
@@ -109,4 +111,4 @@ def check_mongo():
         return {'status': 'error', 'message': str(e)}, 500
     
 if __name__ == "__main__":
-    server.run(debug=True, host="0.0.0.0", port=8080)
+    server.run(debug=True, host="0.0.0.0", port=8090)
