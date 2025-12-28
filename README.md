@@ -152,3 +152,16 @@ curl -X GET "http://localhost:8080/download?fid=<file_id>" \
 
 ```bash
 curl -X GET http://localhost:8080/check-mongo
+```
+
+---
+
+## 👤 Author
+### Mohamed Karam
+Backend Developer — Laravel & Modern PHP
+
+---
+
+## 🛡️ License
+
+This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and share this project with proper attribution.
